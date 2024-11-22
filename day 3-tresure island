@@ -1,0 +1,24 @@
+print("Welcome to Treasure Island.")
+print("Your mission is to find the treasure.")
+print("there are two tunnels ! you have to choose left or right")
+data_one=input("type l for left tunnel (or) r for right tunnel ->")
+if data_one=="l":
+    print("you have choose a right tunnel and reached the beach!\nnow do you want to wait for a boat (or) do u want to swim to the treasure island")
+    data_two=input("type s to swim the sea (or) w to wait for the boat ->")
+    if data_two=="w":
+        print("you made a right choice a rescue boat will be in five minutes")
+        print("you got the boat and reached the treasure castle in the island \nnow there are three doors in the castle-- red,blue,yellow")
+        data_three=input("one of these rooms has the treasure \n type r for red(or)b for blue(or)y for yellow ->")
+        if data_three=="r":
+            print("OMG you got burned by the fire !\n Game over")
+        elif data_three=="b":
+            print("OMG you are eaten by a beast! \nGame over")
+        elif data_three=="y":
+            print("ULLLLLALLLA you found the treasure \n!WINNER!")
+        else:
+            print("Game over")
+    else:
+        print("oops you got attacked by a shark !\nGame over")
+
+else:
+    print("you fell into a deep hole !! \nGame over")
