@@ -1,0 +1,55 @@
+import random
+rock = '''
+    _______
+---'   ____)
+      (_____)
+      (_____)
+      (____)
+---.__(___)
+'''
+
+paper = '''
+    _______
+---'   ____)____
+          ______)
+          _______)
+         _______)
+---.__________)
+'''
+
+scissors = '''
+    _______
+---'   ____)____
+          ______)
+       __________)
+      (____)
+---.__(___)
+'''
+
+game_list=[rock,paper,scissors]
+print("welcome to rock paper scissor game ")
+user_value=int(input("what do u want to choose ? type 0 for rock (or) 1 for paper(or) 2 for scissor\n"))
+
+if user_value >=0 and user_value<=2:
+    print(game_list[user_value])
+    probability = random.randint(0, 2)
+    print("computer choose")
+    print(game_list[probability])
+
+if user_value <0 or user_value >2:
+    print("u have entered a invalid value")
+elif probability == user_value:
+    print("its a draw")
+elif user_value == 0 and probability == 1:
+    print("you lost")
+elif user_value == 0 and probability == 2:
+    print("you won")
+elif user_value == 1 and probability == 0:
+    print("you won")
+elif user_value == 1 and probability == 2:
+    print("you lost")
+elif user_value == 2 and probability == 0:
+    print("you lost")
+elif user_value == 2 and probability == 1:
+    print("you won")
+
