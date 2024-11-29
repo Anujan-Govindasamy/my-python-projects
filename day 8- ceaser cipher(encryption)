@@ -1,0 +1,42 @@
+import art
+print(art.logo)
+alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z','a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+
+finish_program=False
+while finish_program==False:
+    direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n").lower()
+    text = input("Type your message:\n").lower()
+    shift = int(input("Type the shift number:\n"))
+
+    def ceaser(process,original_text,shift_amount):
+        if process=="decode":
+            decrypted_text=""
+            for letter in original_text:
+                if letter in alphabet:
+                    decrypt_index = alphabet.index(letter) - shift_amount
+                    decrypted_text += alphabet[decrypt_index]
+                elif letter not in alphabet:
+                    decrypted_text += letter
+
+            print(f"here is the decoded result {decrypted_text}")
+
+        elif process=="encode":
+            encrypted_text=""
+            for each_letter in original_text:
+                if each_letter in alphabet:
+                    org_index=alphabet.index(each_letter)
+                    encrypt_index=int(org_index+shift_amount)
+                    corresponding_letter=alphabet[encrypt_index]
+                    encrypted_text+=corresponding_letter
+                elif each_letter not in alphabet:
+                    encrypted_text+=each_letter
+
+            print(f"here is the encoded value {encrypted_text}")
+
+        else:
+            print("you have entered a wrong word other then encode and decode")
+    ceaser(direction,text,shift)
+
+    to_continue=input("Type 'yes' if you want to go again. Otherwise, type 'no'\n")
+    if to_continue=="no":
+        finish_program=True
