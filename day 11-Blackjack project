@@ -1,0 +1,99 @@
+import random
+import art
+cards = [11,2,3,4,5,6,7,8,9,10,10,10,10]
+win="YOU WIN"
+lost="YOU LOST ! COMPUTER WON"
+
+def random_number():
+    random_value=random.randint(0,12)
+    return random_value
+def deal_card():
+    random_card=cards[random_number()]
+    return random_card
+def calculate_score(list_of_cards):
+    num_cards=len(list_of_cards)
+    sum_of_all_cards=sum(list_of_cards)
+    if num_cards==2 and sum_of_all_cards==21:
+        return 0
+    elif 11 in list_of_cards and sum_of_all_cards > 21:
+        list_of_cards.remove(11)
+        list_of_cards.append(1)
+        return sum(list_of_cards)
+    else:
+        return sum_of_all_cards
+def compare(user,computer):
+    if user==computer:
+        print(f"Your final hand : {user_cards}, final score : {user_score}\ncomputer's final hand : {computer_cards}, final score : {computer_score}")
+        print("ITS A DRAW")
+    elif computer==0:
+        print(f"Your final hand : {user_cards}, final score : {user_score}\ncomputer's final hand : {computer_cards}, final score : {computer_score}")
+        print("YOU LOST! OPPONENT WON WITH A BLACKJACK")
+    elif user==0:
+        print(f"Your final hand : {user_cards}, final score : {user_score}\ncomputer's final hand : {computer_cards}, final score : {computer_score}")
+        print("YOU WON WITH A BLACKJACK")
+    elif user>21:
+        print(f"Your final hand : {user_cards}, final score : {user_score}\ncomputer's final hand : {computer_cards}, final score : {computer_score}")
+        print(lost)
+    elif computer>21:
+        print(f"Your final hand : {user_cards}, final score : {user_score}\ncomputer's final hand : {computer_cards}, final score : {computer_score}")
+        print(win)
+    elif user==21:
+        print(f"Your final hand : {user_cards}, final score : {user_score}\ncomputer's final hand : {computer_cards}, final score : {computer_score}")
+        print(win)
+    elif computer==21:
+        print(f"Your final hand : {user_cards}, final score : {user_score}\ncomputer's final hand : {computer_cards}, final score : {computer_score}")
+        print(lost)
+    else:
+        if user>computer:
+            print(f"Your final hand : {user_cards}, final score : {user_score}\ncomputer's final hand : {computer_cards}, final score : {computer_score}")
+            print(win)
+        else:
+            print(f"Your final hand : {user_cards}, final score : {user_score}\ncomputer's final hand : {computer_cards}, final score : {computer_score}")
+            print(lost)
+
+
+print(art.logo)
+user_cards= [deal_card(),deal_card()]
+computer_cards= [deal_card(),deal_card()]
+
+end=True
+while end==True:
+    print(f"Your cards : {user_cards} , current score : {sum(user_cards)}\ncomputer's first card : {computer_cards[0]}")
+
+    user_score=calculate_score(user_cards)
+    computer_score=calculate_score(computer_cards)
+
+    if user_score==0:
+        end=False
+        print(compare(user_score,computer_score))
+
+    elif computer_score==0:
+        end=False
+        print(compare(user_score,computer_score))
+
+    elif user_score == 21:
+        end=False
+        print(compare(user_score, computer_score))
+
+    elif computer_score == 21:
+        end=False
+        print(compare(user_score, computer_score))
+
+    elif user_score>21:
+        end=False
+        print(compare(user_score,computer_score))
+
+    elif computer_score > 21:
+        end = False
+        print(compare(user_score, computer_score))
+
+    elif user_score<21:
+        another_card = input("do u want to get another card type 'y' for draw and 'n' for pass \n")
+        if another_card == "y":
+            user_cards.append(deal_card())
+        elif another_card=="n":
+            if computer_score<17:
+                computer_cards.append(deal_card())
+            elif computer_score<21:
+                end=False
+                print(compare(user_score, computer_score))
