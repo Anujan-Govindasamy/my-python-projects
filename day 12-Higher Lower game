@@ -1,0 +1,54 @@
+import random
+import game_data
+import art
+from random import choice
+
+def random_value2():
+    m=choice([i for i in range(0, len(data)-1) if i not in [random_number1]])
+    return m
+
+data=game_data.data
+
+win=0
+end=False
+
+while end==False:
+
+     random_number1=random.randint(0,len(data)-1)
+     random_number2=random_value2()
+
+     if win == 0:
+         print(art.logo)
+         a=(data[random_number1])
+         b=(data[random_number2])
+
+     print(f"a : name = {a['name']}, description = {a['description']} , country = {a['country']}")
+     print(art.vs)
+     print(f"b : name = {b['name']}, description = {b['description']} , country = {b['country']}")
+     # print(a['follower_count'])
+     # print(b['follower_count'])
+
+     if a['follower_count'] >= b['follower_count']:
+         high_profile_value="a"
+         winner=1
+     elif a['follower_count'] < b['follower_count']:
+         high_profile_value="b"
+         winner=2
+
+     user_input=input("Who has more followers type 'a' or 'b' : ")
+     if user_input==high_profile_value:
+         win+=1
+         print(art.logo)
+         print(f"YOU GOT {win} POINTS")
+         if winner==1:
+             a=b
+             b=data[random_value2()]
+
+         elif winner==2:
+             a=a
+             b=data[random_value2()]
+
+     else:
+         end=True
+         print(f"GAME ENDED \nYOU GOT {win} POINTS")
+
