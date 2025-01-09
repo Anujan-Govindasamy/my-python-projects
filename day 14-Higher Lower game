@@ -3,8 +3,8 @@ import game_data
 import art
 from random import choice
 
-def random_value2():
-    m=choice([i for i in range(0, len(data)-1) if i not in [random_number1]])
+def random_value2(avoid):
+    m=choice([i for i in range(0, len(data)-1) if i not in [avoid]])
     return m
 
 data=game_data.data
@@ -15,7 +15,7 @@ end=False
 while end==False:
 
      random_number1=random.randint(0,len(data)-1)
-     random_number2=random_value2()
+     random_number2=random_value2(random_number1)
 
      if win == 0:
          print(art.logo)
@@ -42,11 +42,11 @@ while end==False:
          print(f"YOU GOT {win} POINTS")
          if winner==1:
              a=b
-             b=data[random_value2()]
+             b=data[random_value2(a)]
 
          elif winner==2:
              a=a
-             b=data[random_value2()]
+             b=data[random_value2(a)]
 
      else:
          end=True
